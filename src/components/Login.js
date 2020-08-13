@@ -5,6 +5,8 @@ import { Grid } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
 import Image from "../images/bg-1.jpg"
 
+import { Link } from 'react-router-dom'
+
 const useStyles = ({
   leftContainerStyles: {
     height: '100vh',
@@ -24,13 +26,15 @@ const useStyles = ({
     height: '2rem',
     marginBottom: '3rem',
     border: 'none',
-    backgroundColor: '#F6F6F6'
+    backgroundColor: '#F6F6F6',
+    outline: 'none'
   },
   formStyles: {
     backgroundColor: 'white',
     borderRadius: '10px',
     minHeight: '20rem',
-    paddingTop: '1rem'
+    paddingTop: '1rem',
+    paddingBottom: '1rem'
   },
   buttonStyles: {
     width: '35%',
@@ -78,6 +82,7 @@ class Login extends Component {
                 />
                 <br/>
                 <input className={classes.buttonStyles} type='submit'/>
+                <p>Don't have an account? <span><Link to={'/signup'}>Click here</Link></span> to sign up</p>
               </form>
            </Grid>
            <Grid item sm={2}/>
