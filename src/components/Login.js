@@ -16,18 +16,27 @@ const useStyles = ({
   rightContainerStyles: {
     height: '100vh',
     backgroundColor: '#FF8C22',
-    textAlign: 'center'
+    textAlign: 'center',
+    paddingTop: '10rem'
   },
   textInputs: {
     width: '50%',
-    marginBottom: '3rem' 
+    height: '2rem',
+    marginBottom: '3rem',
+    border: 'none',
+    backgroundColor: '#F6F6F6'
   },
   formStyles: {
-    marginTop: '20%'
+    backgroundColor: 'white',
+    borderRadius: '10px',
+    minHeight: '20rem',
+    paddingTop: '1rem'
   },
-  // buttonStyles: {
-  //   width: '50%'
-  // }
+  buttonStyles: {
+    width: '35%',
+    minHeight: '2rem',
+    border: 'none'
+  }
 })
 
 class Login extends Component {
@@ -53,21 +62,25 @@ class Login extends Component {
       <Grid container direction='column'>
         <Grid container item>
           <Grid className={classes.leftContainerStyles} item sm={6}></Grid>
-          <Grid className={classes.rightContainerStyles} item sm={6}>
+          <Grid className={classes.rightContainerStyles} container item sm={6}>
+           <Grid item sm={2}/>
+           <Grid item sm={8}>
             <form className={classes.formStyles} onSubmit={this.handleSubmit}>
-              <h1>Login</h1>
-              <input className={classes.textInputs} name='username' value={username} onChange={this.handleChange} placeholder='username' />
-              <input
-                className={classes.textInputs}
-                name='password'
-                type='password'
-                value={password}
-                onChange={this.handleChange}
-                placeholder='password'
-              />
-              <br/>
-              <input className={classes.buttonStyles} type='submit'/>
-            </form>
+                <h1>Login</h1>
+                <input className={classes.textInputs} name='username' value={username} onChange={this.handleChange} placeholder='username' />
+                <input
+                  className={classes.textInputs}
+                  name='password'
+                  type='password'
+                  value={password}
+                  onChange={this.handleChange}
+                  placeholder='password'
+                />
+                <br/>
+                <input className={classes.buttonStyles} type='submit'/>
+              </form>
+           </Grid>
+           <Grid item sm={2}/>
           </Grid>
         </Grid>
       </Grid>
