@@ -5,6 +5,7 @@ import { getCurrentUser, logoutUser } from '../actions/user';
 import Login from './Login';
 import SignUp from './SignUp';
 import HelloWorld from './HelloWorld';
+import Main from './Main'
 
 class App extends Component {
   componentDidMount() {
@@ -19,9 +20,10 @@ class App extends Component {
     return (
       <div className='App'>
         <Switch>
+          {/* <Route path={'/home'} component={}/> */}
           <Route path={'/login'} component={Login} />
           <Route path={'/signup'} component={SignUp} />
-          <Route path={'/'} component={HelloWorld} />
+          <Route path={'/'} component={Main} />
         </Switch>
         <button onClick={this.props.logout}>logout</button>
       </div>

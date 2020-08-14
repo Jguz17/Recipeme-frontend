@@ -6,10 +6,32 @@ import { withStyles } from '@material-ui/styles';
 
 const useStyles = ({
   formStyles: {
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '0 auto',
+    backgroundColor: 'white',
+    minHeight: '20rem',
+    paddingTop: '1rem',
+    paddingBottom: '1rem',
+    width: '60%',
+    borderRadius: '10px'
   },
   formContainerStyles: {
-    backgroundColor: '#FF8C22'
+    backgroundColor: '#FF8C22',
+    height: '100vh',
+    paddingTop: '10rem'
+  }, 
+  textInputs: {
+    width: '50%',
+    height: '2rem',
+    marginBottom: '3rem',
+    border: 'none',
+    backgroundColor: '#F6F6F6',
+    outline: 'none'
+  },
+  buttonStyles: {
+    width: '35%',
+    minHeight: '2rem',
+    border: 'none'
   }
 })
 
@@ -38,10 +60,11 @@ class SignUp extends Component {
           <Grid item sm={2}/>
           <Grid item sm={8}>
             <form className={classes.formStyles} onSubmit={this.handleSubmit}>
-              <input name='username' value={username} onChange={this.handleChange} />
+            <h1>Signup</h1>
+              <input className={classes.textInputs} name='username' value={username} onChange={this.handleChange} placeholder='username' />
+              <input className={classes.textInputs} name='password' type='password' value={password} onChange={this.handleChange} placeholder='password' />
               <br/>
-              <input name='password' type='password' value={password} onChange={this.handleChange} />
-              <button type='submit'>Login</button>
+              <button className={classes.buttonStyles} type='submit'>Login</button>
             </form>
           </Grid>
           <Grid item sm={2}/>
