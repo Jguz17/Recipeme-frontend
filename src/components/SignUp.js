@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { signUpUser } from '../actions/user';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom'
 
 const useStyles = ({
   formStyles: {
@@ -32,6 +33,9 @@ const useStyles = ({
     width: '35%',
     minHeight: '2rem',
     border: 'none'
+  },
+  linkTest: {
+    color: '#FF8C22'
   }
 })
 
@@ -64,6 +68,7 @@ class SignUp extends Component {
               <input className={classes.textInputs} name='username' value={username} onChange={this.handleChange} placeholder='username' />
               <input className={classes.textInputs} name='password' type='password' value={password} onChange={this.handleChange} placeholder='password' />
               <br/>
+              <p >Already have an account? <span><Link className={classes.linkTest} to={'/login'}>Click here</Link></span> to login</p>
               <button className={classes.buttonStyles} type='submit'>Login</button>
             </form>
           </Grid>

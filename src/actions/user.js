@@ -28,7 +28,7 @@ export const loginUser = (user) => {
           dispatch(getUser(data.user));
           localStorage.setItem("token", data.jwt);
           //whereever you want to go after logging in
-          history.push("/");
+          history.push("/home");
         }
         //however you want  to  handle the error
         else {
@@ -55,7 +55,7 @@ export const signUpUser = (user) => {
           dispatch(getUser(data.user));
           localStorage.setItem("token", data.jwt);
           //whereever you want to go after logging in
-          history.push("/");
+          history.push("/home");
         } else {
           //however you want  to  handle the error
           history.push("/signup");
