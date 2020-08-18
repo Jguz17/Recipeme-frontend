@@ -40,6 +40,9 @@ const useStyles = ({
     width: '35%',
     minHeight: '2rem',
     border: 'none'
+  },
+  linkTest: {
+    color: '#FF8C22'
   }
 })
 
@@ -82,7 +85,7 @@ class Login extends Component {
                 />
                 <br/>
                 <input className={classes.buttonStyles} type='submit'/>
-                <p>Don't have an account? <span><Link to={'/signup'}>Click here</Link></span> to sign up</p>
+                <p >Don't have an account? <span><Link className={classes.linkTest} to={'/signup'}>Click here</Link></span> to sign up</p>
               </form>
            </Grid>
            <Grid item sm={2}/>
