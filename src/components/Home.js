@@ -22,7 +22,6 @@ export class Home extends Component {
         this.setState({
             recipeApiData: data.hits
         })
-        // console.log(this.state.recipeApiData)
     }
 
     render() {
