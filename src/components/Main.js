@@ -88,6 +88,7 @@ const useStyles = ({
 class Main extends Component {
     render() {
         const { classes } = this.props
+        // console.log(this)
         return (
             <ThemeProvider theme={theme}>
                 <Grid container direction='column'>

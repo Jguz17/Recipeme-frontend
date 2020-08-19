@@ -15,11 +15,16 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { connect } from 'react-redux'
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       maxWidth: 345,
+      backgroundColor: '#ff8c22',
+      color: 'white',
+      marginBottom: '3rem'
     },
     media: {
       height: 0,
@@ -38,13 +43,15 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       backgroundColor: red[500],
     },
+    buttonStyles: {
+      width: '70%',
+      margin: '0 auto'
+    }
   }),
 );
 
-
-export default function RecipeCard(props) {
+function RecipeCard(props) {
   
-
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(null);
 
@@ -53,42 +60,61 @@ export default function RecipeCard(props) {
     setExpanded(!expanded);
   };
 
-  console.log(props)
+  const addRecipe = () => {
+    // console.log(props.user.id)
+    // console.log(props.recipe.recipe.ingredientLines)
+    const name = props.recipe.recipe.label
+    const ingredients = props.recipe.recipe.ingredientLines
+    const source = props.recipe.recipe.url
+    // console.log(props.recipe.recipe.url)
+    const recipeObj = ({ name, ingredients, source })
+
+    fetch('http://localhost:3000/api/v1/recipes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(recipeObj)
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log(data.id)
+
+      const user_id = props.user.id
+      const recipe_id = data.id
+
+      const listObj = ({ user_id, recipe_id })
+
+      fetch('http://localhost:3000/api/v1/lists', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(listObj)
+      })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+    })
+  }
+
+  // console.log(props)
 
   return (
     <Card className={classes.root}>
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={props.recipe.recipe.label}
-        subheader="September 14, 2016"
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
-        title="Paella dish"
+        image={props.recipe.recipe.image}
+        title={props.recipe.recipe.label}
       />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
-      </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+        <button onClick={addRecipe} className={classes.buttonStyles}>
+          Add to My Recipes
+        </button>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -102,31 +128,27 @@ export default function RecipeCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
-          <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-            heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-            browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-            and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-            pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-            saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-          </Typography>
-          <Typography paragraph>
-            Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-            without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-            medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-            again without stirring, until mussels have opened and rice is just tender, 5 to 7
-            minutes more. (Discard any mussels that don’t open.)
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
+            <Typography variant='h4'>
+              Ingredients:
+            </Typography>
+            {props.recipe.recipe.ingredientLines.map(ingredient => {
+              return(
+                  <p>{ingredient}</p>
+              )
+            })}
+            <Typography>
+              <a href={props.recipe.recipe.url}><b>Link To Article</b></a>
+            </Typography>
         </CardContent>
       </Collapse>
     </Card>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+      user: state.user
+  }
+}
+
+export default connect(mapStateToProps, null)(RecipeCard)
