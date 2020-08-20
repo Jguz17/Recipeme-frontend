@@ -60,43 +60,17 @@ function RecipeCard(props) {
     setExpanded(!expanded);
   };
 
-  const addRecipe = () => {
-    // console.log(props.user.id)
-    // console.log(props.recipe.recipe.ingredientLines)
-    const name = props.recipe.recipe.label
-    const ingredients = props.recipe.recipe.ingredientLines
-    const source = props.recipe.recipe.url
-    const image = props.recipe.recipe.image
-    // console.log(props.recipe.recipe.url)
-    const recipeObj = ({ name, ingredients, source, image })
+  const removeFromList = (id) => {
+    fetch(`http://localhost:3000/api/v1/lists/${id}`, { method: 'DELETE'})
+    .then((res) => res.json())
+    .then((data) => console.log(data))
 
-    fetch('http://localhost:3000/api/v1/recipes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(recipeObj)
-    })
+    fetch(`http://localhost:3000/api/v1/recipes/${id}`, { method: 'DELETE'})
     .then((res) => res.json())
     .then((data) => {
-      // console.log(data.id)
-
-      const user_id = props.user.id
-      const recipe_id = data.id
-
-      const listObj = ({ user_id, recipe_id })
-
-      fetch('http://localhost:3000/api/v1/lists', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(listObj)
-      })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+      console.log(data)
+      // props.recipes.filter(recipe => recipe.id !== data.id)
+      // console.log(data)
     })
   }
 
@@ -105,16 +79,16 @@ function RecipeCard(props) {
   return (
     <Card className={classes.root}>
       <CardHeader
-        title={props.recipe.recipe.label}
+        title={props.recipe.name}
       />
       <CardMedia
         className={classes.media}
-        image={props.recipe.recipe.image}
-        title={props.recipe.recipe.label}
+        image={props.recipe.image}
+        title={props.recipe.name}
       />
       <CardActions disableSpacing>
-        <button onClick={addRecipe} className={classes.buttonStyles}>
-          Add to My Recipes
+        <button onClick={() => removeFromList(props.recipe.id)} className={classes.buttonStyles}>
+          Delete
         </button>
         <IconButton
           className={clsx(classes.expand, {
@@ -132,13 +106,13 @@ function RecipeCard(props) {
             <Typography variant='h4'>
               Ingredients:
             </Typography>
-            {props.recipe.recipe.ingredientLines.map(ingredient => {
+            {props.recipe.ingredients.map(ingredient => {
               return(
                   <p>{ingredient}</p>
               )
             })}
             <Typography>
-              <a href={props.recipe.recipe.url}><b>Link To Article</b></a>
+              <a href={props.recipe.source}><b>Link To Article</b></a>
             </Typography>
         </CardContent>
       </Collapse>
