@@ -8,7 +8,7 @@ export class Home extends Component {
 
     state = {
         recipe: [],
-        recipeApiData: []
+        recipeApiData: [],
     }
 
     async handleSubmit(e) {
