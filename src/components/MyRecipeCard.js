@@ -60,21 +60,9 @@ function RecipeCard(props) {
     setExpanded(!expanded);
   };
 
-  const removeFromList = (id) => {
-    fetch(`http://localhost:3000/api/v1/lists/${id}`, { method: 'DELETE'})
-    .then((res) => res.json())
-    .then((data) => console.log(data))
+  
 
-    fetch(`http://localhost:3000/api/v1/recipes/${id}`, { method: 'DELETE'})
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data)
-      // props.recipes.filter(recipe => recipe.id !== data.id)
-      // console.log(data)
-    })
-  }
-
-  // console.log(props)
+ 
 
   return (
     <Card className={classes.root}>
@@ -87,7 +75,7 @@ function RecipeCard(props) {
         title={props.recipe.name}
       />
       <CardActions disableSpacing>
-        <button onClick={() => removeFromList(props.recipe.id)} className={classes.buttonStyles}>
+        <button onClick={() => props.removeFromList(props.recipe.id)} className={classes.buttonStyles}>
           Delete
         </button>
         <IconButton
