@@ -11,7 +11,7 @@ export class Recipes extends Component {
     }
 
     componentDidMount = () => {
-        fetch('http://localhost:3000/api/v1/recipes')
+        fetch('https://recipeme-api.herokuapp.com/api/v1/recipes')
         .then((res) => res.json())
         .then((data) => {
             data.map(item => {
@@ -23,7 +23,7 @@ export class Recipes extends Component {
     }
 
     removeFromList = (id) => {
-        fetch(`http://localhost:3000/api/v1/recipes/${id}`, { method: 'DELETE'})
+        fetch(`https://recipeme-api.herokuapp.com/api/v1/recipes/${id}`, { method: 'DELETE'})
         .then((res) => res.json())
         .then((data) => {
           console.log(data)

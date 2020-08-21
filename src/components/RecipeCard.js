@@ -61,17 +61,15 @@ function RecipeCard(props) {
   };
 
   const addRecipe = () => {
-    // console.log(props.user.id)
-    // console.log(props.recipe.recipe.ingredientLines)
     const name = props.recipe.recipe.label
     const ingredients = props.recipe.recipe.ingredientLines
     const source = props.recipe.recipe.url
     const image = props.recipe.recipe.image
     const user_id = props.user.id
-    // console.log(props.recipe.recipe.url)
+
     const recipeObj = ({ name, ingredients, source, image, user_id })
 
-    fetch('http://localhost:3000/api/v1/recipes', {
+    fetch('https://recipeme-api.herokuapp.com/api/v1/recipes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -82,8 +80,6 @@ function RecipeCard(props) {
     .then((res) => res.json())
     .then((data) => console.log(data))
   }
-
-  // console.log(props)
 
   return (
     <Card className={classes.root}>
