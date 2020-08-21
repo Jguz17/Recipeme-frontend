@@ -70,8 +70,8 @@ class Login extends Component {
         <Grid container item>
           <Grid className={classes.leftContainerStyles} item sm={6}></Grid>
           <Grid className={classes.rightContainerStyles} container item sm={6}>
-           <Grid item sm={2}/>
-           <Grid item sm={8}>
+           <Grid item xs={1}/>
+           <Grid item xs={10}>
             <form className={classes.formStyles} onSubmit={this.handleSubmit}>
                 <h1>Login</h1>
                 <input className={classes.textInputs} name='username' value={username} onChange={this.handleChange} placeholder='username' />
@@ -88,7 +88,7 @@ class Login extends Component {
                 <p >Don't have an account? <span><Link className={classes.linkTest} to={'/signup'}>Click here</Link></span> to sign up</p>
               </form>
            </Grid>
-           <Grid item sm={2}/>
+           <Grid item xs={1}/>
           </Grid>
         </Grid>
       </Grid>

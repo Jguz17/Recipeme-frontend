@@ -2,3 +2,23 @@ a {
     color: white;
     text-decoration: none;
 }
+
+#labelOneStyles {
+    text-align: center;
+}
+.labelOneHeaderStyles {
+    background-color: #FF8C22;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 4rem;
+    margin-top: -2.5rem;
+    color: white;
+}
+
+/* @media all and (max-width: 480px) {
+    .labelOneHeaderStyles {
+        width: 45rem;
+        font-size: 4rem;
+        margin-top: -2.5rem;
+    }
+} */

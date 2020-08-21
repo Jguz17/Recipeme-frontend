@@ -19,16 +19,18 @@ import Image2 from "../images/bg-5.jpg"
 import Image3 from "../images/bg-6.jpg"
 import { Link } from 'react-router-dom'
 
+import '../styles/main.css'
+
 const useStyles = ({
-    labelOneStyles: {
-        backgroundColor: '#FF8C22',
-        textAlign: 'center',
-        width: '45rem',
-        margin: '0 auto',
-        fontSize: '4rem',
-        marginTop: '-2.5rem',
-        color: 'white'
-    },
+    // labelOneStyles: {
+    //     backgroundColor: '#FF8C22',
+    //     textAlign: 'center',
+    //     width: '45rem',
+    //     margin: '0 auto',
+    //     fontSize: '4rem',
+    //     marginTop: '-2.5rem',
+    //     color: 'white'
+    // },
     labelTwoStyles: {
         backgroundColor: '#FF8C22',
         textAlign: 'center',
@@ -99,8 +101,8 @@ class Main extends Component {
                         <Grid item xs={12}>
                             <Header/>
                         </Grid>
-                        <Grid item xs={false} sm={12}>
-                            <h1 className={classes.labelOneStyles}>FOOD FOR THOUGHT</h1>
+                        <Grid id='labelOneStyles' item xs={false} sm={12}>
+                            <h1 className='labelOneHeaderStyles'>FOOD FOR THOUGHT</h1>
                         </Grid>
                         <Grid item xs={false} sm={12}>
                             <h2 className={classes.questionOneStyles}>Why You Should Cook More Often:</h2>

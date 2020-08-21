@@ -60,10 +60,6 @@ function RecipeCard(props) {
     setExpanded(!expanded);
   };
 
-  
-
- 
-
   return (
     <Card className={classes.root}>
       <CardHeader
