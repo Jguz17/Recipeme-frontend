@@ -15,12 +15,26 @@ export class Recipes extends Component {
         .then((res) => res.json())
         .then((data) => {
             data.map(item => {
-                return item.users[0].id === this.props.user.id ? this.setState({
+                return item.user.id === this.props.user.id ? this.setState({
                     myRecipes: [...this.state.myRecipes, item]
                 }) : null
             })
+            // console.log(data)
         })
     }
+
+    removeFromList = (id) => {
+
+        fetch(`http://localhost:3000/api/v1/recipes/${id}`, { method: 'DELETE'})
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+          this.setState({
+              myRecipes: this.state.myRecipes.filter(recipe => recipe.id !== id)
+            })
+        console.log(id)
+      }
+    )}
 
     render() {
         console.log(this.state)
@@ -38,7 +52,7 @@ export class Recipes extends Component {
                         <Grid style={{'textAlign': '-webkit-center'}} item container xs={12}>
                             {this.state.myRecipes ? this.state.myRecipes.map(recipe => {
                                 return <Grid item xs={4}>
-                                    <MyRecipeCard recipes={this.state.myRecipes} recipe={recipe}/>
+                                    <MyRecipeCard removeFromList={this.removeFromList} recipes={this.state.myRecipes} recipe={recipe}/>
                                 </Grid>
                             }) : null}
                         </Grid>

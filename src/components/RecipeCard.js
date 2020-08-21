@@ -67,8 +67,9 @@ function RecipeCard(props) {
     const ingredients = props.recipe.recipe.ingredientLines
     const source = props.recipe.recipe.url
     const image = props.recipe.recipe.image
+    const user_id = props.user.id
     // console.log(props.recipe.recipe.url)
-    const recipeObj = ({ name, ingredients, source, image })
+    const recipeObj = ({ name, ingredients, source, image, user_id })
 
     fetch('http://localhost:3000/api/v1/recipes', {
       method: 'POST',
@@ -79,25 +80,7 @@ function RecipeCard(props) {
       body: JSON.stringify(recipeObj)
     })
     .then((res) => res.json())
-    .then((data) => {
-      // console.log(data.id)
-
-      const user_id = props.user.id
-      const recipe_id = data.id
-
-      const listObj = ({ user_id, recipe_id })
-
-      fetch('http://localhost:3000/api/v1/lists', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(listObj)
-      })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-    })
+    .then((data) => console.log(data))
   }
 
   // console.log(props)
