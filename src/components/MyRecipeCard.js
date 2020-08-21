@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     media: {
       height: 0,
-      paddingTop: '56.25%', // 16:9
+      paddingTop: '56.25%', 
     },
     expand: {
       transform: 'rotate(0deg)',
@@ -59,10 +59,6 @@ function RecipeCard(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  
-
- 
 
   return (
     <Card className={classes.root}>

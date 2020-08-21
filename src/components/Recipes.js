@@ -11,7 +11,7 @@ export class Recipes extends Component {
     }
 
     componentDidMount = () => {
-        fetch('http://localhost:3000/api/v1/recipes')
+        fetch('https://recipeme-api.herokuapp.com/api/v1/recipes')
         .then((res) => res.json())
         .then((data) => {
             data.map(item => {
@@ -19,13 +19,11 @@ export class Recipes extends Component {
                     myRecipes: [...this.state.myRecipes, item]
                 }) : null
             })
-            // console.log(data)
         })
     }
 
     removeFromList = (id) => {
-
-        fetch(`http://localhost:3000/api/v1/recipes/${id}`, { method: 'DELETE'})
+        fetch(`https://recipeme-api.herokuapp.com/api/v1/recipes/${id}`, { method: 'DELETE'})
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
@@ -51,7 +49,7 @@ export class Recipes extends Component {
                         </Typography>
                         <Grid style={{'textAlign': '-webkit-center'}} item container xs={12}>
                             {this.state.myRecipes ? this.state.myRecipes.map(recipe => {
-                                return <Grid item xs={4}>
+                                return <Grid item xs={12} sm={6} lg={4}>
                                     <MyRecipeCard removeFromList={this.removeFromList} recipes={this.state.myRecipes} recipe={recipe}/>
                                 </Grid>
                             }) : null}

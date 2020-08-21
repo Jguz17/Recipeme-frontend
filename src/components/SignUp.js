@@ -13,7 +13,6 @@ const useStyles = ({
     minHeight: '20rem',
     paddingTop: '1rem',
     paddingBottom: '1rem',
-    width: '60%',
     borderRadius: '10px'
   },
   formContainerStyles: {
@@ -61,8 +60,8 @@ class SignUp extends Component {
     return (
       <Grid container direction='column'>
         <Grid className={classes.formContainerStyles} container item>
-          <Grid item sm={2}/>
-          <Grid item sm={8}>
+          <Grid item xs={1} sm={3}/>
+          <Grid item xs={10} sm={6}>
             <form className={classes.formStyles} onSubmit={this.handleSubmit}>
             <h1>Signup</h1>
               <input className={classes.textInputs} name='username' value={username} onChange={this.handleChange} placeholder='username' />
@@ -72,7 +71,7 @@ class SignUp extends Component {
               <button className={classes.buttonStyles} type='submit'>Login</button>
             </form>
           </Grid>
-          <Grid item sm={2}/>
+          <Grid item xs={1} sm={3}/>
         </Grid>
       </Grid>
     );

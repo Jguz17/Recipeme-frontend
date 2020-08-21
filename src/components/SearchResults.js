@@ -23,7 +23,7 @@ export class SearchResults extends Component {
                     </Typography>
                     <Grid style={{'textAlign': '-webkit-center'}} item container xs={12}>
                         {this.props.recipes.map(recipe => {
-                            return <Grid item xs={4}>
+                            return <Grid item xs={12} sm={6} lg={4}>
                                 <RecipeCard recipe={recipe}/>
                             </Grid>
                         })}

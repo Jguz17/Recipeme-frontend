@@ -19,33 +19,9 @@ import Image2 from "../images/bg-5.jpg"
 import Image3 from "../images/bg-6.jpg"
 import { Link } from 'react-router-dom'
 
+import '../styles/main.css'
+
 const useStyles = ({
-    labelOneStyles: {
-        backgroundColor: '#FF8C22',
-        textAlign: 'center',
-        width: '45rem',
-        margin: '0 auto',
-        fontSize: '4rem',
-        marginTop: '-2.5rem',
-        color: 'white'
-    },
-    labelTwoStyles: {
-        backgroundColor: '#FF8C22',
-        textAlign: 'center',
-        width: '45rem',
-        margin: '0 auto',
-        fontSize: '4rem',
-        color: 'white'
-    },
-    labelThreeStyles: {
-        backgroundColor: '#FF8C22',
-        textAlign: 'center',
-        width: '45rem',
-        margin: '3rem auto',
-        fontSize: '4rem',
-        color: 'white',
-        // padding: '3rem 0'
-    },
     questionOneStyles: {
         textAlign: 'center',
         paddingTop: '3rem',
@@ -81,14 +57,13 @@ const useStyles = ({
     },
       contentDescription1: {
           alignSelf: 'center',
-          lineHeight: '3rem'
+          lineHeight: '3rem',
       }
 })
 
 class Main extends Component {
     render() {
         const { classes } = this.props
-        // console.log(this)
         return (
             <ThemeProvider theme={theme}>
                 <Grid container direction='column'>
@@ -99,10 +74,10 @@ class Main extends Component {
                         <Grid item xs={12}>
                             <Header/>
                         </Grid>
-                        <Grid item xs={false} sm={12}>
-                            <h1 className={classes.labelOneStyles}>FOOD FOR THOUGHT</h1>
+                        <Grid className='labelOneStyles' item xs={false} sm={12}>
+                            <h1 className='labelOneHeaderStyles'>FOOD FOR THOUGHT</h1>
                         </Grid>
-                        <Grid item xs={false} sm={12}>
+                        <Grid item xs={false} xs={12}>
                             <h2 className={classes.questionOneStyles}>Why You Should Cook More Often:</h2>
                         </Grid>
                         <Grid className={classes.mainContainerStyles} item container xs={12}>
@@ -166,42 +141,45 @@ class Main extends Component {
                             <Grid item xs={false} sm={12}>
                                 <h2 className={classes.questionOneStyles}>Convinced? Click Here To Find Your Next Recipe</h2>
                             </Grid>
-                            <Grid item xs={false} sm={12}>
-                                <h1 className={classes.labelTwoStyles}>STILL NOT ENOUGH?</h1>
+                            <Grid className='labelOneStyles' item xs={false} sm={12}>
+                                <h1 className='labelOneHeaderStyles'>STILL NOT ENOUGH?</h1>
                             </Grid>
                             <Grid item xs={false} sm={12}>
                                 <h2 className={classes.questionOneStyles}>Here Are Some Of The Many Tasty Foods In Our Recipe Book:</h2>
                             </Grid>
                             <Grid item container xs={12}>
                                 <Grid item xs={1}/>
-                                <Grid className={classes.imageContainerStyles1} item xs={4}/>
-                                <Grid item xs={2}/>
-                                <Grid className={classes.contentDescription1} item xs={4}>
+                                <Grid className={classes.imageContainerStyles1} item xs={10} sm={4}/>
+                                <Grid item xs={0} lg={2}/>
+                                <Grid className={classes.contentDescription1} style={{'textAlign': 'center'}} item xs={12} sm={4}>
                                     For breakfast, we have an amazing french toast recipe. Great for something light and easy in the morning.
                                 </Grid>
                                 <Grid item xs={1}/>
                             </Grid>
                             <Grid item container xs={12}>
                                 <Grid item xs={1}/>
-                                <Grid className={classes.contentDescription1} item xs={4}>
+                                <Grid className={classes.contentDescription1} id='image-content-2' style={{'textAlign': 'center'}} item xs={0} sm={4}>
                                     Delicious salmon with veggies and sauce for lunch. Perfect if you want something a little fancy at home.
                                 </Grid>
-                                <Grid item xs={2}/>
-                                <Grid className={classes.imageContainerStyles2} item xs={4}/>
+                                <Grid item xs={0} lg={2}/>
+                                <Grid className={classes.imageContainerStyles2} item xs={10} sm={4}/>
+                                <Grid className={classes.contentDescription1} id='image-content-2-after' style={{'textAlign': 'center'}} item xs={12} sm={0}>
+                                    Delicious salmon with veggies and sauce for lunch. Perfect if you want something a little fancy at home.
+                                </Grid>
                                 <Grid item xs={1}/>
                             </Grid>
                             <Grid item container xs={12}>
                                 <Grid item xs={1}/>
-                                <Grid className={classes.imageContainerStyles3} item xs={4}/>
-                                <Grid item xs={2}/>
-                                <Grid className={classes.contentDescription1} item xs={4}>
+                                <Grid className={classes.imageContainerStyles3} item xs={10} sm={4}/>
+                                <Grid item xs={0} lg={2}/>
+                                <Grid className={classes.contentDescription1} style={{'textAlign': 'center'}} item xs={12} sm={4}>
                                     Dinner. Perhaps one of the most enjoyable meals: a t-bone steak. Great if you have some time to cook this bad boy and enjoy your masterpiece.
                                 </Grid>
                                 <Grid item xs={1}/>
                             </Grid>
                             <Link to={'/signup'}>
-                                <Grid item xs={false} sm={12}>
-                                    <h1 className={classes.labelThreeStyles}>VIEW RECIPES</h1>
+                                <Grid className='labelThreeStyles' item xs={false} sm={12}>
+                                    <h1 className='labelThreeHeaderStyles'>VIEW RECIPES</h1>
                                 </Grid>
                             </Link>
                         </Grid>
