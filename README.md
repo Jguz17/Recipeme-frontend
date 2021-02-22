@@ -3,7 +3,7 @@
 I built recipeme because I wanted to build a cool app that lets a user search up a recipe by ingredient or recipe name and receive a variety of recipes!
 
 I chose ruby on rails because this was when I was first getting into backend development and wanted to have a working product asap. Also, ROR is an awesome
-backend language fir a beginner.
+backend language for a beginner.
 
 ![Image](https://i.imgur.com/XVP1Y6s.png)
 
